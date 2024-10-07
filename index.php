@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>MySQL Table Viewer</title>
+	<title>MySQL Table Viewer - Title</title>
 </head>
 <body>
-	<h1>MySQL Table Viewer</h1>
+	<h1>MySQL Table Viewer - Satheesh</h1>
 	<?php
 		// Define database connection variables
 		$servername = "csksqlserver1.mysql.database.azure.com";
