@@ -1,4 +1,4 @@
-ployee<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>MySQL Table Viewer</title>
