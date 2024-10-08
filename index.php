@@ -4,40 +4,39 @@
 	<title>MySQL Table Viewer - Title</title>
 </head>
 <body>
-	<h1>MySQL Table Viewer - Satheesh</h1>
+	<h1>MySQL Table Viewer - Satheesh New</h1>
 	<?php
 		// Define database connection variables
-		$servername = 'csksqlserver1.mysql.database.azure.com';
+		$host = 'csksqlserver1.mysql.database.azure.com';
 		$username = 'cskadmin';
 		$password = '@dminpwd123';
-		$dbname = 'mysql';
+		$db_name = 'mysql';
 
 		// Create database connection
-		$conn = new mysqli($servername, $username, $password, $dbname);
+		//$conn = new mysqli($servername, $username, $password, $dbname);
 
 		// Check connection
 		if ($conn->connect_error) {
 			die("Connection failed: " . $conn->connect_error);
 		}
 
-		// Query database for all rows in the table
-		$sql = "SELECT * FROM Employee";
-		$result = $conn->query($sql);
+//Establishes the connection
+$conn = mysqli_init();
+mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
+if (mysqli_connect_errno($conn)) {
+die('Failed to connect to MySQL: '.mysqli_connect_error());
+}
 
-		if ($result->num_rows > 0) {
-			// Display table headers
-			echo "<table><tr><th>ID</th><th>Name</th><th>Email</th></tr>";
-			// Loop through results and display each row in the table
-			while($row = $result->fetch_assoc()) {
-				echo "<tr><td>" . $row["id"] . "</td><td>" . $row["name"] . "</td><td>" . $row["email"] . "</td></tr>";
-			}
-			echo "</table>";
-		} else {
-			echo "0 results";
-		}
+//Run the Select query
+printf("Reading data from table: \n");
+$res = mysqli_query($conn, 'SELECT * FROM Employee');
+while ($row = mysqli_fetch_assoc($res)) {
+var_dump($row);
+}
 
-		// Close database connection
-		$conn->close();
+//Close the connection
+mysqli_close($conn);
+
 	?>
 </body>
 </html>
