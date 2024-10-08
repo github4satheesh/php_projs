@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>MySQL Table Viewer - Title</title>
+	<title>MySQL Table Viewer</title>
 </head>
 <body>
-	<h1>MySQL Table Viewer Products - Satheesh New</h1>
-<?php
-$host = 'csksqlserver1.mysql.database.azure.com';
-$username = 'cskadmin';
-$password = '@dminpwd123';
-$db_name = 'mysql';
+	<h1>MySQL Table Viewer - Azure App Satheesh</h1>
+	<?php
+		// Define database connection variables
+		$servername = "csksqlserver1.mysql.database.azure.com";
+		$username = "cskadmin";
+		$password = "@dminpwd123";
+		$dbname = "Employees";
 
-//Establishes the connection
-$conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
+		// Create database connection
+		$conn = new mysqli($servername, $username, $password, $dbname);
 
-//Run the Update statement
-$product_name = 'BrandNewProduct';
-$new_product_price = 15.1;
-if ($stmt = mysqli_prepare($conn, "UPDATE Products SET Price = ? WHERE ProductName = ?")) {
-mysqli_stmt_bind_param($stmt, 'ds', $new_product_price, $product_name);
-mysqli_stmt_execute($stmt);
-printf("Update: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
+		// Check connection
+		if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
+		}
 
-//Close the connection
-mysqli_stmt_close($stmt);
-}
+		// Query database for all rows in the table
+		$sql = "SELECT * FROM mytable";
+		$result = $conn->query($sql);
 
-mysqli_close($conn);
-?>
+		if ($result->num_rows > 0) {
+			// Display table headers
+			echo "<table><tr><th>ID</th><th>Name</th><th>Email</th></tr>";
+			// Loop through results and display each row in the table
+			while($row = $result->fetch_assoc()) {
+				echo "<tr><td>" . $row["id"] . "</td><td>" . $row["name"] . "</td><td>" . $row["email"] . "</td></tr>";
+			}
+			echo "</table>";
+		} else {
+			echo "0 results";
+		}
+
+		// Close database connection
+		$conn->close();
+	?>
 </body>
 </html>
+
