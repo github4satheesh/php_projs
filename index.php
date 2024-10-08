@@ -10,7 +10,7 @@ ployee<!DOCTYPE html>
 		$servername = "csksqlserver1.mysql.database.azure.com";
 		$username = "cskadmin";
 		$password = "@dminpwd123";
-		$dbname = "cskDB";
+		$dbname = "cskdb";
 
 		// Create database connection
 		$conn = new mysqli($servername, $username, $password, $dbname);
