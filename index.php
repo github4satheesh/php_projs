@@ -29,7 +29,8 @@
 			echo "<table><tr><th>ID</th><th>Name</th><th>Email</th></tr>";
 			// Loop through results and display each row in the table
 			while($row = $result->fetch_assoc()) {
-				echo "<tr><td>" . $row["id"] . "</td><td>" . $row["name"] . "</td><td>" . $row["email"] . "</td></tr>";
+				//echo "<tr><td>" . $row["id"] . "</td><td>" . $row["name"] . "</td><td>" . $row["email"] . "</td></tr>";
+				echo "<tr><td>" . $row["emp_no"] . "</td><td>" . $row["name"] . "</td><td>" . $row["email"] . "</td></tr>";
 			}
 			echo "</table>";
 		} else {
