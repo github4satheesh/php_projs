@@ -7,10 +7,10 @@
 	<h1>MySQL Table Viewer - Azure App Satheesh</h1>
 	<?php
 		// Define database connection variables
-		$servername = "csksqlserver1.mysql.database.azure.com";
+		$servername = "csksqlsrvr1.mysql.database.azure.com";
 		$username = "cskadmin";
 		$password = "@dminpwd123";
-		$dbname = "cskdb";
+		$dbname = "employees";
 
 		// Create database connection
 		$conn = new mysqli($servername, $username, $password, $dbname);
